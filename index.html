@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f8f5f2;
+    color:#333;
+}
+
+body{
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Background */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('Assets/images/desktopbg.png') no-repeat center;
+    background-size: cover;
+    z-index: 0;
+}
+
+/* Content */
+.hero-text {
+    position: relative;
+    z-index: 2;
+    max-width: 500px;
+}
+
+/* 🔥 IMAGE FIX (IMPORTANT) */
+.hero-image {
+    position: absolute;
+    bottom: 0;              /* anchor to bottom */
+    
+    width: 100%;     /* control size */
+    height: auto;
+    
+    z-index: 1;
+}
+
+@media (max-width: 768px){
+
+    .hero::before {
+        background: url('Assets/images/mobilebg.png') no-repeat center;
+        background-size: cover;
+    }
+
+    .hero-text {
+        margin-top: 80px;
+        padding: 0 20px;
+    }
+
+    .hero-image {
+        width: 100%;
+
+        bottom: 0;   /* always stick to edge */
+    }
+}
+
+
+/* FALLING LOVE SYMBOLS — HERO ONLY */
+.hero-hearts{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    z-index:1;
+    pointer-events:none;
+}
+
+.hero-heart{
+    position:absolute;
+    top:-50px;
+    color:rgba(202,168,106,0.72);
+    font-size:var(--heart-size,20px);
+    line-height:1;
+    opacity:0;
+    animation:heroHeartFall var(--heart-duration,8s) linear infinite;
+    animation-delay:var(--heart-delay,0s);
+    will-change:transform, opacity;
+    text-shadow:0 2px 8px rgba(202,168,106,0.15);
+    font-family: 'Playfair Display', serif; /* 🔥 Premium typography for symbols */
+    font-weight: 600;
+}
+
+@keyframes heroHeartFall{
+    0%{
+        transform:translate3d(0,-60px,0) rotate(0deg) scale(0.8);
+        opacity:0;
+    }
+    10%{
+        opacity:0.75;
+    }
+    50%{
+        transform:translate3d(var(--heart-drift,30px),50vh,0) rotate(180deg) scale(1);
+        opacity:0.65;
+    }
+    90%{
+        opacity:0.45;
+    }
+    100%{
+        transform:translate3d(calc(var(--heart-drift,30px) * -0.6),110vh,0) rotate(360deg) scale(0.85);
+        opacity:0;
+    }
+}
+
+@media (max-width:768px){
+    .hero-heart{
+        font-size:var(--heart-size-mobile,16px);
+    }
+}
+
+@media (prefers-reduced-motion:reduce){
+    .hero-heart{
+        animation:none;
+        opacity:0.35;
+        top:12%;
+    }
+}
+
+/* Content stays above */
+.hero-text, .hero img{
+    position:relative;
+    z-index:2;
+}
+
+
+
+.hero h1{
+    font-size:64px;
+    line-height:1.2;
+}
+
+.hero p{
+    color:#777;
+}
+
+.hero span{
+    color:#caa86a;
+}
+
+.hero-text{
+    max-width:500px;
+}
+
+.hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:60px;
+}
+
+.hero span{
+    color:#caa86a;
+}
+
+.hero p{
+    margin:20px 0;
+    letter-spacing:2px;
+}
+
+.hero img{
+    width:auto;
+    max-width:none;
+}
+
+/* SECTION */
+section{
+    padding:60px 10%;
+    text-align:center;
+}
+
+h2{
+    font-family:'Playfair Display',serif;
+    margin-bottom:30px;
+}
+
+/* EVENTS */
+.events{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.card{
+    background:#fff;
+    padding:20px;
+    width:200px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.venue{
+    position: relative;
+    padding:100px 10%;
+}
+
+/* DESKTOP */
+.venue::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:url('Assets/images/venuedesktopbg.png') no-repeat center;
+    background-size: contain;   /* ✅ FULL IMAGE */
+    background-position: center center; /* ✅ PERFECT CENTER */
+    background-color:#f8f5f2;
+    z-index:0;
+}
+
+/* OVERLAY */
+.venue::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+    .venue::before{
+        background:url('Assets/images/venuemobilebg.png') no-repeat center;
+        background-size:contain;  /* 🔥 FIX */
+        background-color:#f8f5f2;
+    }
+}
+
+.map{
+    background: transparent;
+}
+
+
+
+.location{
+    flex:1;
+    text-align:left;
+}
+
+.gallery{
+    display:flex;
+    overflow-x:auto;
+    gap:15px;
+    scroll-snap-type:x mandatory;
+    padding-bottom:10px;
+    scroll-behavior: smooth; /* 🔥 Added for auto-slide smoothness */
+}
+
+.gallery::-webkit-scrollbar{
+    display:none;
+}
+
+.gallery img{
+    flex:0 0 auto;
+    width:250px;
+    height:350px;
+    object-fit:cover;
+    border-radius:12px;
+    scroll-snap-align:center;
+}
+
+
+/* RSVP SECTION */
+.rsvp{
+    position:relative;
+    padding:80px 10%;
+    text-align:center;
+    overflow:hidden;
+}
+
+.rsvp-content{
+    position:relative;
+    z-index:2;
+    max-width:500px;
+    margin:auto;
+}
+
+.rsvp-sub{
+    color:#7a6a60;
+    margin-bottom:30px;
+    font-size:14px;
+    letter-spacing:1px;
+}
+
+.rsvp-card{
+    background:rgba(255,255,255,0.6);
+    backdrop-filter:blur(10px);
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.08);
+    border:1px solid rgba(202,168,106,0.25);
+}
+
+.rsvp-card input,
+.rsvp-card select{
+    width:100%;
+    padding:13px 15px;
+    margin-bottom:15px;
+    border:1px solid #e5d3c3;
+    border-radius:10px;
+    background:rgba(255,255,255,0.8);
+    color:#5a4a42;
+    font-family:'Poppins',sans-serif;
+    outline:none;
+}
+
+.rsvp-card input:focus,
+.rsvp-card select:focus{
+    border-color:#caa86a;
+}
+
+.rsvp-card button{
+    margin-top:5px;
+    width:100%;
+    background:linear-gradient(135deg,#caa86a,#e6c88b);
+    border:none;
+    padding:13px 24px;
+    border-radius:30px;
+    color:#fff;
+    cursor:pointer;
+    font-size:14px;
+    font-family:'Poppins',sans-serif;
+    transition:0.3s;
+}
+
+.rsvp-card button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(0,0,0,0.15);
+}
+
+.rsvp-message{
+    display:none;
+    margin-top:15px;
+    color:#a58d7f;
+    font-size:13px;
+}
+
+@media (max-width:768px){
+    .rsvp{
+        padding:60px 10%;
+    }
+
+    .rsvp-card{
+        padding:25px 20px;
+    }
+}
+
+/* COUNTDOWN */
+/* DESKTOP */
+.countdown{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:25px;
+    max-width:500px;
+    margin:30px auto 0;
+}
+
+/* MOBILE PERFECT ALIGNMENT */
+@media (max-width:768px){
+
+    .countdown{
+        grid-template-columns: repeat(2, 1fr);
+        gap:20px;
+        max-width:260px;
+        margin: 30px auto 0;
+        justify-items: center; /* 🔥 KEY FIX */
+    }
+
+    .count-box{
+        width:100%;   /* 🔥 fill grid cell */
+        max-width:100px; /* keep size controlled */
+        height:90px;
+    }
+}
+
+/* PREMIUM BOX */
+.count-box{
+    position:relative;
+    width:110px;
+    height:110px;
+
+    border-radius:18px;
+
+    /* GLASS EFFECT */
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(6px);
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    /* GOLD BORDER */
+    border:1px solid rgba(202,168,106,0.4);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.08),
+        inset 0 0 20px rgba(255,255,255,0.4);
+
+    transition:0.3s ease;
+}
+
+/* HOVER (DESKTOP PREMIUM FEEL) */
+.count-box:hover{
+    transform:translateY(-6px) scale(1.05);
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.15),
+        0 0 20px rgba(202,168,106,0.3);
+}
+
+/* NUMBER */
+.count-box span{
+    font-size:34px;
+    font-family:'Playfair Display',serif;
+    color:#5a4a42;
+}
+
+/* LABEL */
+.count-box p{
+    font-size:12px;
+    letter-spacing:2px;
+    color:#a58d7f;
+    margin-top:5px;
+}
+
+/* SUBTLE GLOW ANIMATION */
+.count-box::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:18px;
+
+    background: radial-gradient(
+        circle,
+        rgba(202,168,106,0.25),
+        transparent 70%
+    );
+
+    opacity:0;
+    transition:0.4s;
+}
+
+.count-box:hover::after{
+    opacity:1;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+    .count-box{
+        width:90px;
+        height:90px;
+    }
+
+    .count-box span{
+        font-size:26px;
+    }
+}
+
+/* FOOTER */
+footer{
+    background:#3b2b2b;
+    color:#fff;
+    padding:30px;
+    text-align:center;
+}
+
+
+
+.hero-img img{
+    width:100%;
+    height:auto;       /* ✅ natural height */
+    object-fit:contain; /* no crop */
+  
+}
+
+
+/* MOBILE FIX */
+@media (max-width: 768px){
+
+    .hero{
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+        height: 100vh;
+    }
+
+@media (max-width: 768px){
+
+    .hero {
+        height: 100dvh;
+        padding: 0;
+    }
+
+    .hero-text {
+        margin-top: 100px;
+        padding: 0 20px;
+    }
+
+    .hero-image {
+margin-bottom: -58px; /* adjust until flush */
+        bottom: 0; /* IMPORTANT */
+    }
+}
+
+    /* Use your 9:16 background for mobile */
+    .hero::before{
+        background: url('Assets/images/mobilebg.png') no-repeat center;
+        background-size: cover;
+    }
+
+    .hero-text{
+        max-width: 100%;
+        z-index: 2;
+        padding-top: -80%;
+        padding-bottom: 80px;
+        margin-top: 150px;
+    }
+
+    .hero h1{
+        font-size: 36px;
+    }
+
+    .hero h2{
+        font-size: 18px;
+    }
+
+    .hero p{
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+   .hero-image{
+    width: 80%;          /* make image smaller */  
+    height: auto;
+}
+
+.hero{
+    align-items: center;
+}
+
+.hero img{
+    max-width: 100%;
+    height: auto;
+}
+
+.hero{
+    position:relative;
+    height:100vh;
+
+    /* 🔥 ADD THIS */
+    overflow:hidden;
+}
+    
+}
+
+.wedding-events{
+    position: relative;
+    padding:80px 10%;
+    text-align:center;
+    overflow:hidden;
+    
+}
+
+/* BACKGROUND LAYER */
+.wedding-events::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    background: url('Assets/images/desktopeventsbg.png') no-repeat center;
+    background-size: cover;
+
+    z-index:0;
+}
+
+/* OPTIONAL OVERLAY (improves readability) */
+.wedding-events::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    background: rgba(255, 255, 255, 0.75); /* adjust opacity */
+    z-index:1;
+}
+
+/* CONTENT ABOVE BACKGROUND */
+.wedding-events *{
+    position: relative;
+    z-index:2;
+}
+
+@media (max-width: 768px){
+
+    .wedding-events::before{
+        background: url('Assets/images/mobileeventsbg.png') no-repeat center;
+        background-size: cover;
+    }
+
+}
+
+.section-title{
+    font-family:'Playfair Display',serif;
+    letter-spacing:3px;
+    font-size:24px;
+    margin-bottom:50px;
+    color:#5a4a42;
+}
+
+.event-wrapper{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+}
+
+.event-card{
+    position:relative;
+    width:200px;
+    background:#fff;
+    padding:50px 20px 30px;
+    border-radius:16px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    text-align:center;
+    transition:0.3s;
+}
+
+.event-card:hover{
+    transform:translateY(-8px);
+}
+
+/* ICON CIRCLE */
+.icon{
+    position:absolute;
+    top:-25px;
+    left:50%;
+    transform:translateX(-50%);
+    width:55px;
+    height:55px;
+    background:#f6f1eb;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    border:2px solid #e5d3c3;
+}
+
+.icon img{
+    width:65px;
+    height:65px;
+    object-fit:contain;
+}
+
+/* TEXT */
+.event-card h3{
+    font-family:'Playfair Display',serif;
+    font-size:16px;
+    letter-spacing:2px;
+    margin-bottom:10px;
+    color:#5a4a42;
+}
+
+.event-card p{
+    font-size:13px;
+    color:#777;
+    margin:5px 0;
+}
+
+.event-card span{
+    font-size:12px;
+    color:#a58d7f;
+    display:block;
+    margin-bottom:10px;
+}
+
+/* BOTTOM FLORAL (OPTIONAL IMAGE) */
+.event-card::after{
+    content:"";
+    position:absolute;
+    bottom:-28px;
+    left:0;
+    width:100%;
+    height:100px;
+    background:url('Assets/images/flower.png') no-repeat center bottom;
+    background-size:contain;
+    
+}
+
+@media (max-width: 768px){
+
+    .event-wrapper{
+        flex-direction: column;   /* stack vertically */
+        gap: 50px;                /* 🔥 increase space between cards */
+    }
+
+    .event-card{
+        width: 70%;               /* better width for mobile */
+        margin: 0 auto;
+    }
+
+}
+
+/* INTRO SCREEN */
+.intro-screen{
+    position:fixed;
+    top:0px;
+
+    left:0;
+    width:100%;
+    height:100vh;
+display:flex;
+    flex-direction:column;
+
+    /* ✅ CENTER EVERYTHING */
+    align-items:center;
+    justify-content:flex-start;
+padding-bottom: 180px;  /* adjust 60–120px as needed */
+    gap:0px; /* controls space between hands */
+    
+
+    z-index:9999;
+}
+
+.intro-screen::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background: url('Assets/images/introbg.png') no-repeat center;
+    background-size: cover;
+
+    filter: blur(4px);   /* 🔥 BLUR CONTROL */
+    transform: scale(1.1); /* prevent edge cut */
+
+    z-index:0;
+}
+
+.intro-screen::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background: radial-gradient(
+        circle at center,
+        rgba(255,220,180,0.25) 0%,
+        rgba(0,0,0,0.2) 70%
+    );
+
+    z-index:1;
+}
+
+.hand{
+    position: relative;
+    z-index: 2;
+}
+
+
+
+/* HANDS */
+.hand{
+    width:260px;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor:pointer;
+    filter: drop-shadow(0 10px 30px rgba(255,220,180,0.4));
+}
+
+.hand{
+    display:block;
+}
+
+
+/* ANIMATION */
+.move-up{
+    transform:translateY(-135px) scale(1.1);
+}
+
+.move-down{
+    transform:translateY(60px) scale(1.05);
+}
+
+/* HIDE */
+.intro-hide{
+    opacity:0;
+    transform: scale(1.4) translateY(-20px);
+    filter: blur(12px);
+    transition:1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events:none;
+}
+
+.hand{
+    width:380px;   /* 🔥 increase size */
+    max-width:90%; /* responsive safety */
+    
+}
+.girl-hand{
+    margin-top: -50px; /* move hand up */
+}
+
+.boy-hand{
+    margin-top: 60px; /* move hand down */
+}
+
+/* Optional: even bigger on desktop */
+@media (min-width: 1024px){
+    .hand{
+        width:450px;
+    }
+}
+
+/* Mobile adjustment */
+@media (max-width:768px){
+    .hand{
+        width:380px;  /* bigger than before but fits mobile */
+    }
+}
+
+.intro-screen.glow::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background: radial-gradient(
+        circle,
+        rgba(255, 220, 180, 0.6) 0%,
+        rgba(255, 240, 220, 0.4) 30%,
+        transparent 70%
+    );
+
+    opacity:0;
+    transition:1s ease;
+    pointer-events:none;
+}
+
+/* Activate glow */
+.intro-screen.glow::after{
+    opacity:1;
+}
+
+.light-sweep{
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:200%;
+    height:100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent 40%,
+        rgba(255,255,255,0.5) 50%,
+        transparent 60%
+        
+    );
+z-index: 5;
+    transform: skewX(-20deg);
+    opacity:0;
+    pointer-events:none;
+}
+
+.light-sweep.active{
+    animation: sweep 2.5s ease forwards;
+}
+
+@keyframes sweep{
+    0%{left:-100%; opacity:0;}
+    30%{opacity:1;}
+    100%{left:100%; opacity:0;}
+}
+
+/* HERO INITIAL STATE (hidden before intro ends) */
+.hero-text,
+.hero-image {
+    opacity: 0;
+    transform: translateY(60px);
+}
+
+/* ACTIVE STATE (after intro) */
+.hero-text,
+.hero-image {
+    opacity: 0;
+    transform: translate3d(0, 80px, 0) scale(0.96);
+    will-change: transform, opacity;
+}
+
+/* TEXT */
+.hero-show .hero-text {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.9s ease-out;
+    transition-delay: 0.15s;
+}
+
+/* IMAGE */
+.hero-show .hero-image {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 1s ease-out;
+    transition-delay: 0.3s;
+}
+
+.hero-show .hero-text {
+    transition-delay: 0.2s;
+}
+
+.hero-show .hero-image {
+    transition-delay: 0.5s;
+}
+
+/* SCROLL ANIMATION (for all sections) */
+.reveal {
+    opacity: 0;
+    transform: translateY(80px);
+}
+
+/* when visible */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.venue{
+    position: relative;
+    padding:100px 0%;
+    min-height: 700px;  /* increase height */
+
+}
+
+.venue::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:url('Assets/images/venuedesktopbg.png') no-repeat center;
+    background-size:cover;
+    z-index:0;
+    background-position: center 70%; /* adjust visually */
+}
+
+.venue::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    z-index:1;
+}
+
+/* CONTENT ABOVE BG */
+.venue-content{
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+/* TEXT STYLING (match theme) */
+.venue-name{
+    font-family:'Playfair Display',serif;
+    font-size:28px;
+    margin-top:10px;
+    color:#5a4a42;
+}
+
+.venue-place{
+    font-size:16px;
+    color:#a58d7f;
+    margin-bottom:25px;
+}
+
+/* BUTTON SAME STYLE */
+.map-btn{
+    background:linear-gradient(135deg,#caa86a,#e6c88b);
+    border:none;
+    padding:12px 26px;
+    border-radius:30px;
+    color:#fff;
+    cursor:pointer;
+    font-size:14px;
+    transition:0.3s;
+}
+
+.map-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(0,0,0,0.15);
+}
+
+button{
+    background:linear-gradient(135deg,#caa86a,#e6c88b);
+    border:none;
+    padding:12px 24px;
+    border-radius:30px;
+    color:#fff;
+    cursor:pointer;
+}
+
+.dinner{
+    position:relative;
+    padding:100px 10%;
+    text-align:center;
+    overflow:visible; /* 🔥 change this */
+    
+}
+
+/* DESKTOP */
+.dinner::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:url('Assets/images/dinnerdesktopbg.png') no-repeat center;
+    background-size:cover;
+    z-index:0;
+}
+
+/* OVERLAY */
+.dinner::after{
+    content:"";
+    position:absolute;
+    inset:0;
+  
+    z-index:1;
+}
+
+/* CONTENT ABOVE BG */
+.dinner *{
+    position:relative;
+    z-index:2;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+
+    .dinner{
+        padding: 60px 10%;   /* 🔥 reduce vertical space */
+        min-height: 500px;   /* 🔥 control overall height */
+    }
+
+      .dinner::before{
+        background-position: center -120px; /* 🔥 push image more up */
+}
+        .dinner-content{
+        padding-top: 10px; /* 🔥 reduced for mobile */
+    }
+
+
+}
+
+.dinner-content{
+    position: relative;
+    z-index: 2;
+    max-width: 500px;
+    margin: auto;
+    padding-top: 220px; /* desktop balance */
+}
+
+/* Subtitle */
+.dinner-sub{
+    color:#7a6a60;
+    margin-bottom:30px;
+    font-size:14px;
+    letter-spacing:1px;
+    padding-bottom: 30px;
+    
+}
+
+/* Card */
+.dinner-card{
+    background:#fff;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.08);
+    
+}
+
+.dinner-card p{
+    margin:5px 0;
+    color:#5a4a42;
+}
+
+.dinner-card span{
+    display:block;
+    color:#a58d7f;
+    margin:10px 0;
+    font-size:13px;
+}
+
+.dinner-card{
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(10px);
+}
+
+/* 🌸 FLOWER FOR DINNER CARD */
+.dinner-card{
+    position: relative; /* IMPORTANT */
+    overflow: visible;
+}
+
+.dinner-card::after{
+    content:"";
+    position:absolute;
+    bottom:-28px;
+    left:0;
+    width:100%;
+    height:100px;
+    background:url('Assets/images/flower.png') no-repeat center bottom;
+    background-size:contain;
+}
+
+.gallery-wrapper{
+    display:flex;
+    justify-content:center;   /* ✅ centers whole gallery */
+}
+
+.gallery{
+    display:flex;
+    gap:15px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    padding-bottom:10px;
+
+    max-width: 1100px;   /* ✅ controls width */
+    width: 100%;
+}
+
+/* GOLD SHIMMER EFFECT */
+/* IMPORTANT FIX */
+.count-box{
+    position:relative;
+    overflow:hidden; /* 🔥 REQUIRED */
+}
+
+/* SHIMMER LAYER */
+.count-box::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-150%;
+    width:200%;
+    height:100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent 40%,
+        rgba(255,255,255,0.7) 50%,
+        transparent 60%
+    );
+
+    transform: skewX(-20deg);
+    opacity:1; /* 🔥 always visible */
+}
+
+/* AUTO SHIMMER LOOP */
+@media (max-width:768px){
+    .count-box{
+        animation: none;
+    }
+
+    .count-box::before{
+        animation: none;
+    }
+}
+
+/* ANIMATION */
+@keyframes shimmerMove{
+    0%{ }
+    100%{ }
+}
+
+/* ACTUAL MOVEMENT */
+.count-box::before{
+    animation: shimmerSlide 4s infinite;
+}
+
+@keyframes shimmerSlide{
+    0%{ left:-150%; }
+    100%{ left:150%; }
+}
+
+/* REMOVE BLUE CLICK OUTLINE */
+img:focus,
+img:active {
+    outline: none;
+}
+
+/* Extra safety for all elements */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.tap-text{
+    position:absolute;
+    bottom:40px;
+    color:#fff;
+    font-size:12px;
+    letter-spacing:2px;
+    opacity:0.7;
+    animation: blink 1.5s infinite;
+    z-index:2;
+}
+
+@keyframes blink{
+    0%,100%{opacity:0.3;}
+    50%{opacity:1;}
+}
+
+.particles{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+}
+
+.particles::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 2px, transparent 2px);
+    background-size: 40px 40px;
+    animation: moveParticles 20s linear infinite;
+    opacity:0.3;
+}
+
+@keyframes moveParticles{
+    from{transform:translateY(0);}
+    to{transform:translateY(-200px);}
+}
+
+
+
+.intro-screen::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background: radial-gradient(
+        circle at center,
+        rgba(255,220,180,0.35) 0%,
+        rgba(0,0,0,0.4) 60%
+    );
+
+    z-index:1;
+}
+
+.intro-screen::before{
+    animation: shimmerBg 8s linear infinite;
+}
+
+@keyframes shimmerBg{
+    0%{ filter: blur(4px) brightness(1); }
+    50%{ filter: blur(4px) brightness(1.1); }
+    100%{ filter: blur(4px) brightness(1); }
+}
+
+@keyframes floatBokeh{
+    0%{
+        transform:translateY(0) scale(1);
+        opacity:0.3;
+    }
+    50%{
+        transform:translateY(-80px) scale(1.4);
+        opacity:0.8;
+    }
+    100%{
+        transform:translateY(0) scale(1);
+        opacity:0.3;
+    }
+}
+
+.bokeh span:nth-child(1){
+    top:10%; left:20%;
+    width:180px; height:180px;
+}
+
+.bokeh span:nth-child(2){
+    top:60%; left:10%;
+    width:260px; height:260px;
+}
+
+.bokeh span:nth-child(3){
+    top:30%; right:15%;
+    width:200px; height:200px;
+}
+
+.bokeh span:nth-child(4){
+    bottom:10%; right:20%;
+    width:300px; height:300px;
+}
+
+@keyframes pulseGlow{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.05);}
+    100%{transform:scale(1);}
+}
+
+.move-up{
+    transform:translateY(-135px) scale(1.15);
+}
+
+.move-down{
+    transform:translateY(60px) scale(1.1);
+}
+
+/* FAMILY SECTION */
+.family{
+    text-align:center;
+    padding:80px 10%;
+}
+
+.family-wrapper{
+    display:flex;
+    align-items:center;   /* 🔥 vertical center fix */
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.family-card{
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(10px);
+    padding:30px 40px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    width:280px;
+    transition:0.3s;
+}
+
+.family-card:hover{
+    transform:translateY(-6px);
+}
+
+.family-card h3{
+    font-family:'Playfair Display',serif;
+    font-size:16px;
+    letter-spacing:2px;
+    margin-bottom:15px;
+    color:#caa86a;
+}
+
+.family-card p{
+    margin:5px 0;
+    color:#5a4a42;
+    font-size:14px;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+    .family-wrapper{
+        flex-direction:column;
+        align-items:center;
+        gap:25px;
+    }
+
+    .family-card{
+        width:80%;
+    }
+}
+
+.divider{
+    font-size:26px;
+    color:#caa86a;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    height:100%;   /* 🔥 ensures vertical center */
+}
+
+/* PREMIUM MUSIC BUTTON STYLES */
+.music-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid #caa86a;
+    color: #caa86a;
+    cursor: pointer;
+    z-index: 10000; /* Above everything */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    padding: 0;
+    
+    /* 🔥 HIDE INITIALLY */
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 🔥 CLASS TO REVEAL BUTTON */
+.music-btn.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.music-btn:hover {
+    background: #caa86a;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(202, 168, 106, 0.4);
+}
+
+.music-btn.muted {
+    background: rgba(255, 255, 255, 0.6);
+    color: #a58d7f;
+    border-color: #a58d7f;
+}
+
+.music-btn svg {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease;
+}
+
+.music-btn .icon-off {
+    display: none;
+}
+
+.music-btn.muted .icon-on {
+    display: none;
+}
+
+.music-btn.muted .icon-off {
+    display: block;
+}
+
+</style>
+</head>
+
+<body>
+
+    <!-- AUDIO ELEMENT -->
+    <audio id="bgMusic" loop>
+        <source src="audio/music1.mpeg" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- PREMIUM MUSIC TOGGLE BUTTON -->
+    <button id="musicToggle" class="music-btn" aria-label="Toggle Music">
+        <!-- Icon ON (Speaker with waves) -->
+        <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+        </svg>
+        <!-- Icon OFF (Speaker with X) -->
+        <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+        </svg>
+    </button>
+
+    <!-- INTRO SCREEN -->
+<div class="intro-screen" id="introScreen">
+
+  
+    <!-- GIRL HAND (TOP) -->
+<img src="Assets/images/girl-hand.png" class="hand girl-hand" id="girlHand">
+
+<!-- BOY HAND (BOTTOM) -->
+<img src="Assets/images/boy-hand.png" class="hand boy-hand" id="boyHand">
+
+<div class="light-sweep" id="lightSweep"></div>
+
+<p class="tap-text">Tap to Enter</p>
+
+
+
+</div>
+
+<!-- HERO -->
+<section class="hero" id="heroSection">
+    <!-- FALLING LOVE SYMBOLS — HERO ONLY -->
+    <div class="hero-hearts" aria-hidden="true">
+        <!-- 🔥 Replaced basic emojis with premium typography symbols -->
+        <span class="hero-heart" style="left:4%;--heart-size:18px;--heart-size-mobile:14px;--heart-duration:7s;--heart-delay:0s;--heart-drift:24px;">♥</span>
+        <span class="hero-heart" style="left:11%;--heart-size:26px;--heart-size-mobile:18px;--heart-duration:9s;--heart-delay:0.8s;--heart-drift:-28px;">❦</span>
+        <span class="hero-heart" style="left:19%;--heart-size:16px;--heart-size-mobile:13px;--heart-duration:8s;--heart-delay:1.6s;--heart-drift:36px;">✧</span>
+        <span class="hero-heart" style="left:28%;--heart-size:22px;--heart-size-mobile:16px;--heart-duration:10s;--heart-delay:2.4s;--heart-drift:-32px;">❥</span>
+        <span class="hero-heart" style="left:38%;--heart-size:16px;--heart-size-mobile:13px;--heart-duration:7.5s;--heart-delay:3.2s;--heart-drift:25px;">♥</span>
+        <span class="hero-heart" style="left:48%;--heart-size:24px;--heart-size-mobile:17px;--heart-duration:9.5s;--heart-delay:4s;--heart-drift:-35px;">❦</span>
+        <span class="hero-heart" style="left:58%;--heart-size:15px;--heart-size-mobile:13px;--heart-duration:8.5s;--heart-delay:4.8s;--heart-drift:30px;">✦</span>
+        <span class="hero-heart" style="left:68%;--heart-size:22px;--heart-size-mobile:17px;--heart-duration:10s;--heart-delay:5.6s;--heart-drift:-25px;">❥</span>
+        <span class="hero-heart" style="left:78%;--heart-size:15px;--heart-size-mobile:13px;--heart-duration:7s;--heart-delay:6.4s;--heart-drift:32px;">♥</span>
+        <span class="hero-heart" style="left:87%;--heart-size:25px;--heart-size-mobile:17px;--heart-duration:9s;--heart-delay:7.2s;--heart-drift:-30px;">❦</span>
+        <span class="hero-heart" style="left:95%;--heart-size:18px;--heart-size-mobile:14px;--heart-duration:8s;--heart-delay:8s;--heart-drift:22px;">✧</span>
+    </div>
+
+<div class="hero-text">
+<p>TOGETHER WITH THEIR FAMILIES</p>
+<h1>Aarav <span>&</span> Meera</h1>
+<p>ARE GETTING MARRIED</p>
+<h2>25 December 2027</h2>
+</div>
+
+    <img class="hero-image" src="Assets/images/couple.png">
+
+</section>
+
+
+
+        <!-- FAMILY SECTION -->
+<section class="family reveal">
+
+    <h2 class="section-title">WITH THE BLESSINGS OF</h2>
+
+   <div class="family-wrapper">
+
+    <div class="family-card">
+        <h3>GROOM'S FAMILY</h3>
+        <p><strong>Mr. Rajesh Sharma</strong></p>
+        <p>Mrs. Sunita Sharma</p>
+    </div>
+
+    <div class="divider">♥</div>
+
+    <div class="family-card">
+        <h3>BRIDE'S FAMILY</h3>
+        <p><strong>Mr. Ramesh Verma</strong></p>
+        <p>Mrs. Kavita Verma</p>
+    </div>
+
+</div>
+
+</section>
+
+<!-- WEDDING EVENTS -->
+<section class="wedding-events reveal">
+    <h2 class="section-title">WEDDING EVENTS</h2>
+
+    <div class="event-wrapper reveal">
+
+        <div class="event-card ">
+            <div class="icon">
+    <img src="Assets/images/mehandi.png" alt="Mehendi">
+</div>
+            <h3>MEHENDI</h3>
+            <p>21 DEC 2027</p>
+            <span>10:00 AM Onwards</span>
+            <p>The Grand Garden<br>Jaipur</p>
+        </div>
+
+
+        <div class="event-card">
+            <div class="icon">
+    <img src="Assets/images/haldi.png" alt="Haldi">
+</div>
+            <h3>HALDI</h3>
+            <p>22 DEC 2027</p>
+            <span>10:00 AM Onwards</span>
+            <p>The Grand Garden<br>Jaipur</p>
+        </div>
+
+        <div class="event-card">
+            <div class="icon">
+    <img src="Assets/images/sangeeth.png" alt="Sangeet">
+</div>
+            <h3>SANGEET</h3>
+            <p>23 DEC 2027</p>
+            <span>07:00 PM Onwards</span>
+            <p>The Grand Garden<br>Jaipur</p>
+        </div>
+
+        <div class="event-card">
+            <div class="icon">
+    <img src="Assets/images/wedding.png" alt="Wedding">
+</div>
+            <h3>WEDDING</h3>
+            <p>24 DEC 2027</p>
+            <span>07:30 PM Onwards</span>
+            <p>The Grand Garden<br>Jaipur</p>
+        </div>
+
+        <div class="event-card">
+            <div class="icon">
+    <img src="Assets/images/reception.png" alt="Reception">
+</div>
+            <h3>RECEPTION</h3>
+            <p>25 DEC 2027</p>
+            <span>07:00 PM Onwards</span>
+            <p>The Grand Garden<br>Jaipur</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- VENUE -->
+<!-- VENUE -->
+<section class="venue reveal">
+
+    <div class="venue-content">
+        <h2 class="section-title">VENUE</h2>
+
+        <p class="venue-name">The Grand Garden</p>
+        <p class="venue-place">Jaipur, Rajasthan</p>
+
+        <a href="https://maps.app.goo.gl/7eerYHnvLavPFCxw5" target="_blank">
+    <button class="map-btn">Open in Maps</button>
+</a>
+    </div>
+
+</section>
+
+
+<!-- DINNER SECTION -->
+<section class="dinner reveal">
+
+    <div class="dinner-content">
+        <h2 class="section-title">DINNER</h2>
+
+        <p class="dinner-sub">
+            Join us for a delightful evening of food & celebration
+        </p>
+
+        <div class="dinner-card">
+            <p>25 December 2027</p>
+            <span>08:00 PM Onwards</span>
+            <p>The Grand Garden, Jaipur</p>
+        </div>
+    </div>
+
+</section>
+
+
+
+<!-- GALLERY -->
+<section class="reveal">
+  <h2>Gallery</h2>
+
+  <div class="gallery-wrapper">
+    <div class="gallery" id="autoGallery">
+      <img src="Assets/images/beachgallery.png">
+      <img src="Assets/images/boatgallery.png">
+      <img src="Assets/images/maldivegallery.png">
+      <img src="Assets/images/parisgallery.png">
+      
+    </div>
+  </div>
+
+</section>
+
+<!-- RSVP SECTION -->
+<section class="rsvp reveal">
+    <div class="rsvp-content">
+        <h2 class="section-title">RSVP</h2>
+
+        <p class="rsvp-sub">
+            Kindly confirm your presence and join us in celebrating our special day
+        </p>
+
+        <div class="rsvp-card">
+            <form id="rsvpForm">
+                <input type="text" id="rsvpName" placeholder="Your Name" required>
+
+                <select id="rsvpAttendance" required>
+                    <option value="" disabled selected>Will you attend?</option>
+                    <option value="Yes, I will attend">Yes, I will attend</option>
+                    <option value="Sorry, I can't attend">Sorry, I can't attend</option>
+                </select>
+
+                <input type="number" id="rsvpGuests" placeholder="Number of Guests" min="1" max="10" required>
+
+                <button type="submit">Confirm RSVP</button>
+            </form>
+
+            <p class="rsvp-message" id="rsvpMessage">
+                Thank you! Your RSVP has been received ❤️
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="reveal">
+<h2>Countdown</h2>
+<div class="countdown">
+
+  <div class="count-box">
+    <span id="days">00</span>
+    <p>DAYS</p>
+</div>
+
+<div class="count-box">
+    <span id="hours">00</span>
+    <p>HOURS</p>
+</div>
+
+<div class="count-box">
+    <span id="minutes">00</span>
+    <p>MIN</p>
+</div>
+
+<div class="count-box">
+    <span id="seconds">00</span>
+    <p>SEC</p>
+</div>
+</div>
+</div>
+</section>
+
+<script>
+    const sweep = document.getElementById("lightSweep");
+const boyHand = document.getElementById("boyHand");
+const girlHand = document.getElementById("girlHand");
+const intro = document.getElementById("introScreen");
+const bgMusic = document.getElementById("bgMusic");
+const musicToggle = document.getElementById("musicToggle");
+
+setTimeout(()=>{
+    sweep.classList.add("active");
+}, 400);
+
+
+const hero = document.getElementById("heroSection");
+
+intro.addEventListener("click", () => {
+
+    // STEP 1
+    boyHand.classList.add("move-up");
+
+    // STEP 2
+    setTimeout(()=>{
+        girlHand.classList.add("move-down");
+    }, 200);
+
+    // STEP 3
+    setTimeout(()=>{
+        intro.classList.add("glow");
+    }, 350);
+
+    // STEP 4
+   setTimeout(() => {
+    intro.classList.add("intro-hide");
+}, 1400);
+
+// STEP 5: Show Hero & Start Music exactly when hero section is revealed
+setTimeout(() => {
+    hero.classList.add("hero-show");
+    
+    // 🔥 SHOW MUSIC BUTTON
+    musicToggle.classList.add("active");
+
+    // START MUSIC ON HERO ENTER
+    bgMusic.volume = 0.5; // Set volume to 50%
+    let playPromise = bgMusic.play();
+    
+    if (playPromise !== undefined) {
+        playPromise.then(_ => {
+            // Autoplay started successfully - Button is already in ON state by default
+        }).catch(error => {
+            // Autoplay was blocked by the browser
+            console.log("Audio play blocked by browser:", error);
+            musicToggle.classList.add("muted"); // Reflect the muted state visually
+        });
+    }
+}, 1600);
+
+});
+
+// MUSIC TOGGLE LOGIC
+musicToggle.addEventListener("click", (e) => {
+    e.stopPropagation(); // Prevent intro screen from triggering if clicked while visible
+    
+    if (bgMusic.paused) {
+        bgMusic.play();
+        musicToggle.classList.remove("muted");
+    } else {
+        bgMusic.pause();
+        musicToggle.classList.add("muted");
+    }
+});
+
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    reveals.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+
+        if (sectionTop < triggerBottom) {
+            section.classList.add("active");
+        }
+    });
+}
+
+let ticking = false;
+
+function onScroll() {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            revealOnScroll();
+            ticking = false;
+        });
+        ticking = true;
+    }
+}
+
+window.addEventListener("scroll", onScroll);
+
+
+// RSVP FORM
+const rsvpForm = document.getElementById("rsvpForm");
+const rsvpMessage = document.getElementById("rsvpMessage");
+
+if (rsvpForm) {
+    rsvpForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById("rsvpName").value.trim();
+        const attendance = document.getElementById("rsvpAttendance").value;
+        const guests = document.getElementById("rsvpGuests").value;
+
+        if (!name || !attendance || !guests) return;
+
+        rsvpForm.style.display = "none";
+        rsvpMessage.style.display = "block";
+        rsvpMessage.innerText =
+            `Thank you, ${name}! ${attendance}. Guests: ${guests} ❤️`;
+    });
+}
+
+// 🔥 GALLERY AUTO-SLIDE LOGIC
+const gallery = document.getElementById("autoGallery");
+let autoSlideInterval;
+
+function startAutoSlide() {
+    if (!gallery) return;
+    
+    // Clear any existing interval to prevent multiple
+    clearInterval(autoSlideInterval); 
+    
+    autoSlideInterval = setInterval(() => {
+        const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+        
+        // If reached the end, scroll back to start smoothly
+        if (gallery.scrollLeft >= maxScroll - 10) {
+            gallery.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            // Scroll by image width (250px) + gap (15px)
+            gallery.scrollBy({ left: 265, behavior: 'smooth' });
+        }
+    }, 3000); // 3000ms = 3 seconds
+}
+
+// Start the auto slide
+startAutoSlide();
+
+// Pause auto-slide on interaction (hover/touch)
+if (gallery) {
+    gallery.addEventListener("mouseenter", () => clearInterval(autoSlideInterval));
+    gallery.addEventListener("touchstart", () => clearInterval(autoSlideInterval));
+    
+    // Resume auto-slide when interaction ends
+    gallery.addEventListener("mouseleave", startAutoSlide);
+    gallery.addEventListener("touchend", startAutoSlide);
+}
+
+
+// COUNTDOWN TIMER
+const weddingDate = new Date("December 25, 2026 00:00:00").getTime();
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const gap = weddingDate - now;
+
+  if (gap <= 0) {
+    document.getElementById("days").innerText = "00";
+    document.getElementById("hours").innerText = "00";
+    document.getElementById("minutes").innerText = "00";
+    document.getElementById("seconds").innerText = "00";
+    return;
+}
+
+    const second = 1000;
+    const minute = second * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
+
+    const d = Math.floor(gap / day);
+    const h = Math.floor((gap % day) / hour);
+    const m = Math.floor((gap % hour) / minute);
+    const s = Math.floor((gap % minute) / second);
+
+    document.getElementById("days").innerText = d;
+    document.getElementById("hours").innerText = h.toString().padStart(2, '0');
+    document.getElementById("minutes").innerText = m.toString().padStart(2, '0');
+    document.getElementById("seconds").innerText = s.toString().padStart(2, '0');
+}
+
+// Disable scroll restoration
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+// Always start from top
+window.addEventListener("load", () => {
+    window.scrollTo(0, 0);
+});
+
+// RUN COUNTDOWN
+updateCountdown(); // run once immediately
+setInterval(updateCountdown, 1000); // update every second
+
+
+</script>
+
+
+
+<!-- FOOTER -->
+<footer>
+    <p>We can't wait to celebrate with you ❤️</p>
+    <p style="margin-top:10px; font-family:'Playfair Display',serif; font-size:10px; color:#fff5e2;">
+        With love
+    </p>
+    <p style="margin-top:10px; font-family:'Playfair Display',serif; font-size:18px; color:#e6c88b;">
+        Aarav & Meera
+    </p>
+</footer>
+
+</body>
+</html>
